@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "e92f8d26-1b65-407e-8823-d00e40b42680",
+		"name": "Collection1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get",
+			"description": "",
+			"item": [
+				{
+					"name": "Get User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9b98c9ed-12ce-49be-bb54-e89041ae534f",
+								"type": "text/javascript",
+								"exec": [
+									"console.log(\"Hello World!\");",
+									"",
+									"let urlVar = pm.variables.get(\"url\");",
+									"console.log(\"Url Variable value is \"+ urlVar);",
+									"",
+									"pm.variables.set(\"tester\",\"POSTMAN\");",
+									"console.log(pm.variables.get(\"tester\"));"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/api/users/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						},
+						"description": "Get User request"
+					},
+					"response": []
+				},
+				{
+					"name": "Get User list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3eede0f0-32a2-4dc2-bfcd-04a175ec0e2c",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Verify status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/api/users?page=2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ScriptsTest",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d2a500d5-3747-4e2b-9b90-a0bd832b6219",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "bda9f883-8bf0-48fc-9c3a-8d5c19da75ee",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "POST",
+			"description": "",
+			"item": [
+				{
+					"name": "User Registration",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"sydney@fife\",\r\n    \"password\": \"pistol\"\r\n}"
+						},
+						"url": {
+							"raw": "https://reqres.in/api/register",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "853400e3-e726-47d5-a55a-1d8b86ce6e9f",
+				"type": "text/javascript",
+				"exec": [
+					"console.log(\"log from collection as Pre-request scripts\");"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "3d16f613-0149-46ba-a4ec-3fea537ec764",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "22562e96-0080-49ea-bd94-3c485640cf92",
+			"key": "url",
+			"value": "https://reqres.in",
+			"type": "string",
+			"description": ""
+		}
+	]
+}
